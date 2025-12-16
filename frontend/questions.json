@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Which protocol automatically assigns IP addresses?",
+    "choices": ["DNS", "DHCP", "FTP", "SNMP"],
+    "answer": "DHCP"
+  },
+  {
+    "question": "What port does HTTPS use by default?",
+    "choices": ["80", "22", "443", "3389"],
+    "answer": "443"
+  },
+  {
+    "question": "Which device operates at Layer 3 of the OSI model?",
+    "choices": ["Switch", "Hub", "Router", "Repeater"],
+    "answer": "Router"
+  },
+  {
+    "question": "What does DNS resolve?",
+    "choices": ["MAC to IP", "IP to MAC", "Hostname to IP", "Port to Service"],
+    "answer": "Hostname to IP"
+  }
+]
