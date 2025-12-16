@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network+ Practice Quiz</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0f24, #1c2b4a);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    #question {
+      margin: 20px 0;
+      font-size: 1.2rem;
+      min-height: 70px;
+    }
+
+    .option {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .option:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.02);
+    }
+
+    #nextBtn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      background: #4aa3ff;
+      color: #000;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: none;
+    }
+
+    #nextBtn:hover {
+      background: #7bbcff;
+    }
+
+    #feedback {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      min-height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Network+ Practice Quiz</h1>
+    <div id="question">Loading question...</div>
+    <div id="options"></div>
+    <div id="feedback"></div>
+    <button id="nextBtn">Next Question</button>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: "Which wireless standard operates only in the 5 GHz band and supports up to 54 Mbps?",
+        options: ["802.11b", "802.11g", "802.11a", "802.11n"],
+        answer: 2
+      },
+      {
+        q: "What port does HTTPS use by default?",
+        options: ["20", "443", "80", "3389"],
+        answer: 1
+      },
+      {
+        q: "Which device separates collision domains?",
+        options: ["Hub", "Switch", "Repeater", "Access Point"],
+        answer: 1
+      },
+      {
+        q: "Which cable type is most resistant to EMI?",
+        options: ["UTP", "Coax", "STP", "Fiber"],
+        answer: 3
+      },
+      {
+        q: "Which protocol assigns IP addresses automatically?",
+        options: ["DNS", "DHCP", "SMTP", "SNMP"],
+        answer: 1
+      }
+    ];
+
+    let current = 0;
+
+    function loadQuestion() {
+      const questionEl = document.getElementById("question");
+      const optionsEl = document.getElementById("options");
+      const feedbackEl = document.getElementById("feedback");
+      const nextBtn = document.getElementById("nextBtn");
+
+      let q = questions[current];
+      questionEl.textContent = q.q;
+      optionsEl.innerHTML = "";
+      feedbackEl.textContent = "";
+      nextBtn.style.display = "none";
+
+      q.options.forEach((opt, index) => {
+        let div = document.createElement("div");
+        div.className = "option";
+        div.textContent = opt;
+        div.onclick = () => selectAnswer(index);
+        optionsEl.appendChild(div);
+      });
+    }
+
+    function selectAnswer(index) {
+      const feedbackEl = document.getElementById("feedback");
+      const nextBtn = document.getElementById("nextBtn");
+
+      const correct = questions[current].answer;
+      if (index === correct) {
+        feedbackEl.textContent = "✅ Correct!";
+        feedbackEl.style.color = "#4aff96";
+      } else {
+        feedbackEl.textContent = "❌ Incorrect!";
+        feedbackEl.style.color = "#ff6b6b";
+      }
+      nextBtn.style.display = "block";
+    }
+
+    document.getElementById("nextBtn").onclick = () => {
+      current++;
+      if (current >= questions.length) current = 0;
+      loadQuestion();
+    };
+
+    loadQuestion();
+  </script>
+</body>
+</html>
