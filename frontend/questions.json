@@ -1,22 +1,22 @@
 [
-  {
-    "question": "Which protocol automatically assigns IP addresses?",
-    "choices": ["DNS", "DHCP", "FTP", "SNMP"],
-    "answer": "DHCP"
-  },
-  {
-    "question": "What port does HTTPS use by default?",
-    "choices": ["80", "22", "443", "3389"],
-    "answer": "443"
-  },
-  {
-    "question": "Which device operates at Layer 3 of the OSI model?",
-    "choices": ["Switch", "Hub", "Router", "Repeater"],
-    "answer": "Router"
-  },
-  {
-    "question": "What does DNS resolve?",
-    "choices": ["MAC to IP", "IP to MAC", "Hostname to IP", "Port to Service"],
-    "answer": "Hostname to IP"
-  }
+  { "question": "Which protocol assigns IP addresses automatically?", "choices": ["DNS","DHCP","FTP","SNMP"], "answer": "DHCP" },
+  { "question": "What port does HTTPS use by default?", "choices": ["80","22","443","3389"], "answer": "443" },
+  { "question": "Which OSI layer is responsible for routing?", "choices": ["Layer 2","Layer 3","Layer 4","Layer 7"], "answer": "Layer 3" },
+  { "question": "Which device separates collision domains?", "choices": ["Hub","Switch","Repeater","Bridge"], "answer": "Switch" },
+  { "question": "Which cable type is immune to EMI?", "choices": ["UTP","STP","Coax","Fiber"], "answer": "Fiber" },
+  { "question": "What does DNS resolve?", "choices": ["MAC to IP","IP to MAC","Hostname to IP","Port to Service"], "answer": "Hostname to IP" },
+  { "question": "Which port does SSH use?", "choices": ["21","22","23","3389"], "answer": "22" },
+  { "question": "Which protocol is used to securely browse the web?", "choices": ["HTTP","FTP","HTTPS","SMTP"], "answer": "HTTPS" },
+  { "question": "Which wireless standard operates at 5 GHz only?", "choices": ["802.11b","802.11g","802.11a","802.11n"], "answer": "802.11a" },
+  { "question": "What device forwards traffic based on MAC address?", "choices": ["Router","Switch","Firewall","Modem"], "answer": "Switch" },
+  { "question": "What protocol is used for email delivery?", "choices": ["POP3","SMTP","IMAP","SNMP"], "answer": "SMTP" },
+  { "question": "Which layer encrypts data?", "choices": ["Physical","Transport","Presentation","Session"], "answer": "Presentation" },
+  { "question": "What port does DNS primarily use?", "choices": ["53","80","443","25"], "answer": "53" },
+  { "question": "Which IP address is APIPA?", "choices": ["10.0.0.1","192.168.1.1","169.254.10.5","172.16.0.1"], "answer": "169.254.10.5" },
+  { "question": "Which protocol maps IP to MAC?", "choices": ["DNS","ARP","RARP","ICMP"], "answer": "ARP" },
+  { "question": "What topology uses a single backbone cable?", "choices": ["Star","Ring","Bus","Mesh"], "answer": "Bus" },
+  { "question": "Which device filters traffic based on rules?", "choices": ["Switch","Hub","Firewall","Repeater"], "answer": "Firewall" },
+  { "question": "What port does RDP use?", "choices": ["22","3389","443","8080"], "answer": "3389" },
+  { "question": "Which protocol checks connectivity?", "choices": ["ICMP","FTP","SMTP","SSH"], "answer": "ICMP" },
+  { "question": "Which address is used at Layer 2?", "choices": ["IP","MAC","Port","Hostname"], "answer": "MAC" }
 ]

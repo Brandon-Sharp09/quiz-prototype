@@ -26,10 +26,21 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
       text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
+      margin-bottom: 10px;
+    }
+
+    #stats {
       margin-bottom: 15px;
+      font-size: 1rem;
     }
 
     #question {
@@ -80,7 +91,12 @@
   <div class="container">
     <h1>Network+ Practice Quiz</h1>
 
-    <div id="question">Loading...</div>
+    <div id="stats">
+      Correct: <span id="correct">0</span> |
+      Incorrect: <span id="incorrect">0</span>
+    </div>
+
+    <div id="question">Loading questions...</div>
     <div id="options"></div>
     <div id="feedback"></div>
 
@@ -90,6 +106,8 @@
   <script>
     let questions = [];
     let current = 0;
+    let correct = 0;
+    let incorrect = 0;
 
     fetch("./questions.json")
       .then(res => res.json())
@@ -97,20 +115,20 @@
         questions = data;
         loadQuestion();
       })
-      .catch(err => {
-        document.getElementById("question").textContent = "Failed to load questions";
-        console.error(err);
+      .catch(() => {
+        document.getElementById("question").textContent =
+          "Error loading questions.json";
       });
 
     function loadQuestion() {
       const q = questions[current];
+
       document.getElementById("question").textContent = q.question;
+      document.getElementById("feedback").textContent = "";
+      document.getElementById("nextBtn").style.display = "none";
 
       const optionsEl = document.getElementById("options");
       optionsEl.innerHTML = "";
-
-      document.getElementById("feedback").textContent = "";
-      document.getElementById("nextBtn").style.display = "none";
 
       q.choices.forEach(choice => {
         const div = document.createElement("div");
@@ -127,16 +145,32 @@
       if (choice === questions[current].answer) {
         feedback.textContent = "✅ Correct!";
         feedback.style.color = "#4aff96";
+        correct++;
+        document.getElementById("correct").textContent = correct;
       } else {
         feedback.textContent = "❌ Incorrect!";
         feedback.style.color = "#ff6b6b";
+        incorrect++;
+        document.getElementById("incorrect").textContent = incorrect;
       }
 
       document.getElementById("nextBtn").style.display = "block";
     }
 
     document.getElementById("nextBtn").onclick = () => {
-      current = (current + 1) % questions.length;
+      current++;
+
+      if (current >= questions.length) {
+        alert(
+          `Quiz complete!\n\nCorrect: ${correct}\nIncorrect: ${incorrect}`
+        );
+        current = 0;
+        correct = 0;
+        incorrect = 0;
+        document.getElementById("correct").textContent = 0;
+        document.getElementById("incorrect").textContent = 0;
+      }
+
       loadQuestion();
     };
   </script>
